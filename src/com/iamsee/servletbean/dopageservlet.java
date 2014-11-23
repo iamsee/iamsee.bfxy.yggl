@@ -105,6 +105,27 @@ public class dopageservlet extends HttpServlet {
 		System.out.println(postnamelist.size());
 		System.out.println("nowlist:"+nowlist.size());
 		session.setAttribute("nowlist", nowlist);
+		String insertmsg = (String)request.getAttribute("insertmsg");
+		String updatemsg = (String)request.getAttribute("updatemsg");
+		String delmsg = (String)request.getAttribute("delmsg");
+		if(insertmsg == null)
+		{
+			insertmsg="";
+		}
+		if(updatemsg == null)
+		{
+			updatemsg="";
+		}
+		if(delmsg == null)
+		{
+			delmsg="";
+		}
+		System.out.println(insertmsg);
+		System.out.println(updatemsg);
+		System.out.println(delmsg);
+		session.setAttribute("insertmsg", insertmsg);
+		session.setAttribute("updatemsg", updatemsg);
+		session.setAttribute("delmsg", delmsg);
 		
 		
 		response.sendRedirect("../admin/showinfo.jsp");

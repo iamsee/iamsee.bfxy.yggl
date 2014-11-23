@@ -6,8 +6,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 ArrayList nowlist = (ArrayList)session.getAttribute("nowlist");
 System.out.println(nowlist.size());
 
-
+String insertmsg = (String)session.getAttribute("insertmsg");
+System.out.println(insertmsg);
+String updatemsg = (String)session.getAttribute("updatemsg");
+System.out.println(updatemsg);
+String delmsg = (String)session.getAttribute("delmsg");
+System.out.println(delmsg);
+if((!insertmsg.equals("没有插入返回信息")) && (insertmsg != null) && (!insertmsg.equals("")))
+{
 %>
+<script type="text/javascript"> alert("<%=insertmsg%>"); </script>
+<%
+} 
+if((!updatemsg.equals("没有更新返回信息")) && (updatemsg != null) && (!updatemsg.equals("")))
+{
+%>
+
+	<script type="text/javascript"> alert("<%=updatemsg%>"); </script>
+
+<%
+}
+if((!delmsg.equals("没有删除返回信息")) && (delmsg != null) && (!delmsg.equals("")))
+{
+ %>
+ 
+ <script type="text/javascript"> alert("<%=delmsg%>"); </script>
+ <%
+}
+%>
+ 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -28,7 +55,7 @@ System.out.println(nowlist.size());
 </head>
 
 <body>
-<center>
+
 <jsp:include page="select.jsp"></jsp:include>
 bbbb
 <table>
@@ -40,6 +67,7 @@ bbbb
 		<td>身份证</td>
 		<td>工作时间</td>
 		<td>所属机构</td>
+		<td>操作</td>
 
 
 	</tr>
@@ -61,14 +89,20 @@ bbbb
 	 	<td><%=bi.getIdcard() %></td>
 	 	<td><%=bi.getWorktime() %></td>
 	 	<td><%=bi.getPostname() %></td>
+	 	<td>
+	 		<a href="servlet/dobaseinfo?type=toupdate&baseinfoid=<%=bi.getId()%>">修改</a>
+	 		<a href="servlet/dobaseinfo?type=del&baseinfoid=<%=bi.getId()%>">删除</a>
+	 	</td>
 	 </tr>
 	 <%}
 	 } %>
 	 </table>
 	
-		 
+		 <div>
+		 	<a href="servlet/dobaseinfo?type=toinsert">新增员工</a>
+		 </div>
 	aaaaaaaaaaaaa
 	<jsp:include page="pagefoot.jsp"></jsp:include>
-	</center>
+	
 </body>
 </html>

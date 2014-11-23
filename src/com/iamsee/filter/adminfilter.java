@@ -35,7 +35,7 @@ public class adminfilter implements Filter{
 		
 		if(admin == null ||"".equals(admin))
 		{
-			res.sendRedirect("../index.jsp");
+			res.sendRedirect("../login.jsp");
 			
 		}
 		else
