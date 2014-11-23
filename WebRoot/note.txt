@@ -1,0 +1,3 @@
+采用sqlserver 数据库  数据库执行语句在sql_app目录下
+
+filter权限限制目录是vote（投票）目录

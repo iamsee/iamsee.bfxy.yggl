@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>regservlet</servlet-name>
+    <servlet-class>com.iamsee.servletbean.regservlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>loginservlet</servlet-name>
+    <servlet-class>com.iamsee.servletbean.loginservlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>selectvoteservlet</servlet-name>
+    <servlet-class>com.iamsee.servletbean.selectvoteservlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>dovoteservlet</servlet-name>
+    <servlet-class>com.iamsee.servletbean.dovoteservlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>showvoteservlet</servlet-name>
+    <servlet-class>com.iamsee.servletbean.showvoteservlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>doadminservlet</servlet-name>
+    <servlet-class>com.iamsee.servletbean.doadminservlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>addvoteservlet</servlet-name>
+    <servlet-class>com.iamsee.servletbean.addvoteservlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>adminshowvoteservlet</servlet-name>
+    <servlet-class>com.iamsee.servletbean.adminshowvoteservlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>dopageservlet</servlet-name>
+    <servlet-class>com.iamsee.servletbean.dopageservlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>regservlet</servlet-name>
+    <url-pattern>/servlet/regservlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>loginservlet</servlet-name>
+    <url-pattern>/servlet/loginservlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>selectvoteservlet</servlet-name>
+    <url-pattern>/servlet/selectvoteservlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>dovoteservlet</servlet-name>
+    <url-pattern>/servlet/dovoteservlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>showvoteservlet</servlet-name>
+    <url-pattern>/servlet/showvoteservlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>addvoteservlet</servlet-name>
+    <url-pattern>/servlet/addvoteservlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>adminshowvoteservlet</servlet-name>
+    <url-pattern>/servlet/adminshowvoteservlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>dopageservlet</servlet-name>
+    <url-pattern>/servlet/dopageservlet</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>user</filter-name>
+    <filter-class>com.iamsee.filter.userfilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>user</filter-name>
+    <url-pattern>/vote/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>admin</filter-name>
+    <filter-class>com.iamsee.filter.adminfilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>admin</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+</web-app>
