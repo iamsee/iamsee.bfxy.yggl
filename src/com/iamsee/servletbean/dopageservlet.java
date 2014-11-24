@@ -102,6 +102,7 @@ public class dopageservlet extends HttpServlet {
 		session.setAttribute("pageNumber", pageNumber);
 		session.setAttribute("totalPages", totalPages);
 		session.setAttribute("postnamelist", postnamelist);
+		session.setAttribute("totallist", totallist);
 		System.out.println(postnamelist.size());
 		System.out.println("nowlist:"+nowlist.size());
 		session.setAttribute("nowlist", nowlist);
@@ -126,6 +127,8 @@ public class dopageservlet extends HttpServlet {
 		session.setAttribute("insertmsg", insertmsg);
 		session.setAttribute("updatemsg", updatemsg);
 		session.setAttribute("delmsg", delmsg);
+		String downstate = "false";
+		session.setAttribute("downstate", downstate);
 		
 		
 		response.sendRedirect("../admin/showinfo.jsp");

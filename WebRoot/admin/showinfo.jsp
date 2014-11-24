@@ -6,36 +6,70 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 ArrayList nowlist = (ArrayList)session.getAttribute("nowlist");
 System.out.println(nowlist.size());
 
+ArrayList downlist = (ArrayList)session.getAttribute("totallist");
+	System.out.println(downlist.size());
+	session.setAttribute("downlist", downlist);
+	session.setAttribute("basePath", basePath);
+	session.setAttribute("path", path);
+	System.out.println(basePath);
+	System.out.println(path);
+
 String insertmsg = (String)session.getAttribute("insertmsg");
 System.out.println(insertmsg);
 String updatemsg = (String)session.getAttribute("updatemsg");
 System.out.println(updatemsg);
 String delmsg = (String)session.getAttribute("delmsg");
 System.out.println(delmsg);
+String downstate = (String)session.getAttribute("downstate");
+System.out.println(downstate);
+if(downstate.equals("ok"))
+{
+downstate = "false";
+session.setAttribute("downstate", downstate);
+%>
+<script type="text/javascript">
+window.onload = function(){
+var x = "<%=basePath%>"+"downfile/ygjldown.xls";
+
+window.location.href=x;
+
+}
+</script>
+</script>
+<%
+} 
 if((!insertmsg.equals("没有插入返回信息")) && (insertmsg != null) && (!insertmsg.equals("")))
 {
+
 %>
 <script type="text/javascript"> alert("<%=insertmsg%>"); </script>
 <%
+insertmsg = "";
+session.setAttribute("insertmsg", insertmsg);
 } 
 if((!updatemsg.equals("没有更新返回信息")) && (updatemsg != null) && (!updatemsg.equals("")))
 {
+
 %>
 
 	<script type="text/javascript"> alert("<%=updatemsg%>"); </script>
 
 <%
+updatemsg = "";
+session.setAttribute("updatemsg", updatemsg);
 }
 if((!delmsg.equals("没有删除返回信息")) && (delmsg != null) && (!delmsg.equals("")))
 {
+
  %>
  
  <script type="text/javascript"> alert("<%=delmsg%>"); </script>
  <%
+ delmsg = "";
+session.setAttribute("delmsg", delmsg);
 }
 %>
  
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -100,6 +134,7 @@ bbbb
 	
 		 <div>
 		 	<a href="servlet/dobaseinfo?type=toinsert">新增员工</a>
+		 	<span><a href="servlet/todownservlet?type=down">下载到表格</a></span>
 		 </div>
 	aaaaaaaaaaaaa
 	<jsp:include page="pagefoot.jsp"></jsp:include>

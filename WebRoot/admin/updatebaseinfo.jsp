@@ -29,7 +29,7 @@ baseinfo bi = (baseinfo)session.getAttribute("bi");
   	title
   	</div>
     <div>
-    	<form action="servlet/dobaseinfo" method="get">
+    	<form action="servlet/dobaseinfo" method="post">
     	<p>类型:<input  readonly="true" name="type" value="update""></p>
     	<p>id:<input type="text" name="baseinfoid" readonly="true" value="<%=bi.getId()%>"></p>
     	<p>姓名：	<input type="text" name="name" value="<%=bi.getName()%>"></p>
