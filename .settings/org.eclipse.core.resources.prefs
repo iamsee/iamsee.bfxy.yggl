@@ -1,5 +1,8 @@
 eclipse.preferences.version=1
+encoding//WebRoot/admin/adminloginsuccess.jsp=UTF-8
 encoding//WebRoot/admin/pagefoot.jsp=UTF-8
 encoding//WebRoot/admin/select.jsp=UTF-8
+encoding//WebRoot/admin/showmsg.jsp=UTF-8
+encoding//WebRoot/admin/top.jsp=UTF-8
 encoding//WebRoot/admin/updatebaseinfo.jsp=UTF-8
 encoding/<project>=utf8

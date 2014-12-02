@@ -1,4 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
+<%
+String infopage="showinfo.jsp";
+session.setAttribute("infopage", infopage);
+ %>
 <html>
 
 <body>

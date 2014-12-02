@@ -53,7 +53,8 @@ public class todownservlet extends HttpServlet {
 		
 		System.out.println(downlist.size());
 		daochu dc = new daochu();
-		String aaa= "../webapps/iamsee.bfxy.yggl/downfile/";
+		//String aaa= "../webapps/iamsee.bfxy.yggl/downfile/";
+		String aaa= "/alidata/webdata/jsp/webapps/iamsee.bfxy.yggl/downfile/";
 		dc.doit(downlist,aaa);
 		
 		String downstate =	"ok";

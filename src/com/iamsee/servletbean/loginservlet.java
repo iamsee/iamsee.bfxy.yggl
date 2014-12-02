@@ -73,7 +73,13 @@ public class loginservlet extends HttpServlet {
 			System.out.println(name);
 			System.out.println(session.getAttribute("admin"));
 			
-			response.sendRedirect("../admin/adminloginsuccess.jsp");
+			String infopage = "showmsg.jsp";
+			session.setAttribute("infopage", infopage);
+			//response.sendRedirect("dopageservlet");
+			String rootname = name;
+			session.setAttribute("rootname", name);
+			System.out.println(rootname);
+			response.sendRedirect("../admin/adminindex.jsp");
 			
 		}
 		else

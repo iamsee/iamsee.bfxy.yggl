@@ -1,10 +1,21 @@
 <%@page import="com.iamsee.valuebean.baseinfo"%>
 <%@page language="java" import="java.util.*" pageEncoding="utf8"%>
+<%@page  contentType="text/html;  charset=utf-8"  %>  
+<%@ page import="org.jfree.data.general.DefaultPieDataset,org.jfree.chart.ChartFactory
+,org.jfree.chart.JFreeChart,org.jfree.chart.servlet.*" %>
 <%
+
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+String webkeyword = (String)session.getAttribute("webkeyword");
+int allnum = Integer.parseInt(session.getAttribute("allnum").toString());
+int keywordnum = Integer.parseInt(session.getAttribute("keywordnum").toString());
+
 ArrayList nowlist = (ArrayList)session.getAttribute("nowlist");
 System.out.println(nowlist.size());
+String infopage = (String)session.getAttribute("infopage");
+System.out.println(infopage);
 
 ArrayList downlist = (ArrayList)session.getAttribute("totallist");
 	System.out.println(downlist.size());
@@ -26,6 +37,8 @@ if(downstate.equals("ok"))
 {
 downstate = "false";
 session.setAttribute("downstate", downstate);
+
+
 %>
 <script type="text/javascript">
 window.onload = function(){
@@ -86,22 +99,29 @@ session.setAttribute("delmsg", delmsg);
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
+<style type="text/css">
+	body{ background: url("admin/images/bg.gif"); font:bold; color: blue;}
+	tr{border: 5px;}
+    td{width:auto; text-align:center;font-size:18px;font-family:"微软雅黑";color:black}
+
+</style>
 </head>
 
 <body>
-
+<div style="display: block; float:left; width:800px; height:auto;  margin-right:10px;">
 <jsp:include page="select.jsp"></jsp:include>
-bbbb
-<table>
+
+
+<TABLE style="BORDER-COLLAPSE: collapse" borderColor=#000000  cellPadding=1  padding-left=10px; align=left border=1>
 	<tr>
-		<td>姓名</td>
-		<td>简拼</td>
-		<td>生日</td>
-		<td>家乡</td>
-		<td>身份证</td>
-		<td>工作时间</td>
-		<td>所属机构</td>
-		<td>操作</td>
+		<td style="color: #FF0000">姓名</td>
+		<td style="color: #FF0000">简拼</td>
+		<td style="color: #FF0000">生日</td>
+		<td style="color: #FF0000">家乡</td>
+		<td style="color: #FF0000">身份证</td>
+		<td style="color: #FF0000">工作时间</td>
+		<td style="color: #FF0000">所属机构</td>
+		<td style="color: #FF0000">操作</td>
 
 
 	</tr>
@@ -130,14 +150,44 @@ bbbb
 	 </tr>
 	 <%}
 	 } %>
+	 
+	 <tr>
+	 	<td><a href="servlet/dobaseinfo?type=toinsert"  >新增员工</a></td>
+	 	<td><a href="servlet/todownservlet?type=down">下载到表格</a></span></td>
+	 </tr>
+	 <tr>
+	 <td colspan="7">
+	 <jsp:include page="pagefoot.jsp"></jsp:include>
+	 </td>
+	 </tr>
 	 </table>
+
 	
-		 <div>
-		 	<a href="servlet/dobaseinfo?type=toinsert">新增员工</a>
-		 	<span><a href="servlet/todownservlet?type=down">下载到表格</a></span>
-		 </div>
-	aaaaaaaaaaaaa
-	<jsp:include page="pagefoot.jsp"></jsp:include>
-	
+</div>
+<div style="display:block; margin-top:100px; float:left; width:300px; height:300px; ">
+筛查条目数:<%=keywordnum %>
+总条目数:<%=allnum %>
+占比:<%=(100*keywordnum/allnum) %>%
+<%
+
+    DefaultPieDataset dpd = new DefaultPieDataset();
+    
+    dpd.setValue(webkeyword, 100*keywordnum/allnum);
+    dpd.setValue("其它所有", 100-(100*keywordnum/allnum));
+    
+    
+    JFreeChart chart = ChartFactory.createPieChart("筛查比例",dpd, true, false, false);
+    
+    String fileName = ServletUtilities.saveChartAsPNG(chart,300,300,session); 
+    //ServletUtilities是面向web开发的工具类，返回一个字符串文件名,文件名自动生成，生成好的图片会自动放在服务器（tomcat）的临时文件下（temp）
+    
+    String url = request.getContextPath() + "/DisplayChart?filename=" + fileName;
+    //根据文件名去临时目录下寻找该图片，这里的/DisplayChart路径要与配置文件里用户自定义的<url-pattern>一致
+    System.out.println(url);
+
+%>
+
+<img src="<%= url %>" width="300" height="300">
+</div>
 </body>
 </html>

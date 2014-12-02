@@ -17,6 +17,7 @@ public class DBbaseinfo {
 
 		if (sql != null && !sql.equals("")) {
 			db.getRs(sql);
+			
 			if (db.rs != null) {
 				baseinfolist = new ArrayList<baseinfo>();
 				try {

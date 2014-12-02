@@ -2,9 +2,6 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String infopage = "showinfo.jsp";
-	session.removeAttribute("infopage");
-	session.setAttribute("infopage", infopage);
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -12,7 +9,7 @@ String infopage = "showinfo.jsp";
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'adminloginsuccess2.jsp' starting page</title>
+    <title>My JSP 'test1.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,20 +20,16 @@ String infopage = "showinfo.jsp";
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 <style type="text/css">
-body{ background: url("admin/images/left-bg.gif"); font:bold; color: blue;}
+	body{ background: url("admin/images/bg.gif"); font:bold; color: blue;}
+	tr{border: 5px;}
+    td{width:auto; text-align:center;font-size:18px;font-family:"微软雅黑";color:black}
+
 </style>
   </head>
   
   <body>
-<center>
-<p>管理员登录成功</p>
-<br/>
-<br/>
-<center>
-	<a href="servlet/dopageservlet" target="right">查看员工信息</a>
-	            
-</center>
-
-
-</body>
+  <center>
+    <h3>请选择操作</h3>
+    </center>
+  </body>
 </html>
